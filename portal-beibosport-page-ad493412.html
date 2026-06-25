@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贝博体育 · 内容索引与资料说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #162b40 100%);
+            color: #e7edf3;
+            padding: 4rem 2rem 3.2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #7c9bff, #3b82f6);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            color: #bcd0e3;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.18);
+            color: #b8d1ff;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-top: 1.2rem;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+        }
+
+        /* 正文浅色区 */
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+            width: 100%;
+            flex: 1;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 2rem 1.8rem;
+            border-radius: 18px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #eaedf2;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.85rem;
+            color: #0b1a2e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 i {
+            font-style: normal;
+            background: #3b82f6;
+            color: white;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .card p {
+            color: #2c3e50;
+            font-size: 0.98rem;
+            margin-bottom: 0;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.6rem;
+        }
+
+        .card ul li {
+            padding: 0.4rem 0 0.4rem 1.6rem;
+            position: relative;
+            color: #2c3e50;
+            font-size: 0.96rem;
+        }
+
+        .card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #1a5cdb;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            font-weight: 500;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #0b3f9e;
+            border-bottom: 1px solid #0b3f9e;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 0.8rem;
+            color: #0b1a2e;
+            border-left: 5px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        .intro-text {
+            background: #ffffff;
+            padding: 1.8rem 2rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e9ecf2;
+            margin: 1.8rem 0;
+        }
+
+        .intro-text p {
+            margin-bottom: 0.8rem;
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-item {
+            margin: 1.2rem 0;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #dce2ec;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #0b1a2e;
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 1.05rem;
+        }
+
+        .faq-a {
+            color: #2c3e50;
+            font-size: 0.96rem;
+            padding-left: 0.5rem;
+        }
+
+        .tip-box {
+            background: #eef4ff;
+            border-radius: 14px;
+            padding: 1.6rem 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #3b82f6;
+        }
+
+        .tip-box p {
+            margin: 0.3rem 0;
+            color: #1e2a3a;
+        }
+
+        .sentence-link {
+            background: white;
+            padding: 1.6rem 2rem;
+            border-radius: 18px;
+            border: 1px solid #e6eaf0;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 1.05rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #6b7b8e;
+            font-size: 0.85rem;
+            padding: 2rem 0 0.5rem;
+            border-top: 1px solid #dde2ea;
+            margin-top: 3rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 720px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                padding: 3rem 1.2rem 2.5rem;
+            }
+            .content {
+                padding: 2rem 1rem 3rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .card {
+                padding: 1.6rem;
+            }
+            .intro-text {
+                padding: 1.4rem;
+            }
+            .tip-box {
+                padding: 1.2rem 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>贝博体育 · 信息索引</h1>
+        <p>从资料整理与功能说明的角度，提供关于平台结构、使用场景及内容要点的清晰概览。</p>
+        <span class="tagline">体育资讯 · 数据聚合 · 内容索引</span>
+    </header>
+
+    <main class="content">
+        <!-- 摘要 / 介绍 -->
+        <div class="intro-text">
+            <p><strong>贝博体育</strong> 是一个以体育内容聚合与信息展示为核心的平台，主要提供赛事动态、统计数据、体育资料整理等服务。页面围绕“信息索引”这一逻辑展开，方便使用者快速了解平台所收录的内容范围、常见分类以及数据呈现方式。</p>
+            <p>对于日常关注体育资讯、赛程变化或需要查阅过往赛事记录的用户，<a href="https://portal-beibosport.com">贝博体育</a> 作为资料参考入口，能够提供结构化的浏览路径。以下从主要亮点、使用建议及常见疑问三个方面做出说明。</p>
+        </div>
+
+        <!-- 亮点卡片 -->
+        <h2 class="section-title">平台内容亮点</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3><i>1</i> 分类索引清晰</h3>
+                <p>按照体育项目、赛事阶段、数据维度进行归类，减少信息干扰。每个主要板块均有独立的资料卡片，便于对照和筛选。</p>
+            </div>
+            <div class="card">
+                <h3><i>2</i> 赛程与数据整合</h3>
+                <p>将赛程时间、对阵信息、历史数据整合在同一浏览路径下，省去多个页面之间切换的步骤。部分模块支持按日期或联赛筛选。</p>
+            </div>
+            <div class="card">
+                <h3><i>3</i> 内容更新节奏</h3>
+                <p>信息内容依据赛事周期进行同步更新，保持数据与实际情况的基本一致。用户可将其作为快速了解近期赛况的辅助参考。</p>
+            </div>
+            <div class="card">
+                <h3><i>4</i> 多终端适配</h3>
+                <p>页面布局针对移动端与桌面端均做了响应式调整，在手机、平板、电脑上均可正常浏览主要内容及数据表格。</p>
+            </div>
+        </div>
+
+        <!-- 使用场景 / 建议 -->
+        <h2 class="section-title">使用建议</h2>
+        <div class="tip-box">
+            <p><strong>▪ 信息查阅型场景</strong> — 可用于快速查看某联赛近期的赛程安排、比赛结果以及积分变化，尤其适合赛前准备或赛后回顾时作为资料补充。</p>
+            <p><strong>▪ 对比与整理场景</strong> — 如果你需要横向对比不同球队或运动员的数据，可借助平台内的分类索引模块，按项目或赛季筛选后自行整理。</p>
+            <p><strong>▪ 日常浏览建议</strong> — 建议优先关注首页的核心导航区域，根据你的兴趣（足球、篮球、网球等）选择对应分类，再进一步查阅详细内容。</p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <h2 class="section-title">常见疑问摘要</h2>
+        <div class="faq-item">
+            <span class="faq-q">Q：贝博体育是否提供实时直播或视频内容？</span>
+            <span class="faq-a">A：本平台主要提供赛事信息、数据统计及资料索引，不包含直播或视频播放功能。具体内容的呈现形式以页面展示为准。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">Q：数据来源与更新频率如何？</span>
+            <span class="faq-a">A：平台所收录的信息均来自公开体育数据接口与编辑整理，更新频率与赛事实际进度保持一致，部分历史数据会做定期复核。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">Q：是否需要注册或登录才能浏览？</span>
+            <span class="faq-a">A：大部分内容板块可直接浏览，无需注册账户。部分个性化功能或数据导出工具可能需要用户自行确认使用条件。</span>
+        </div>
+
+        <!-- 自然嵌入链接的句子 -->
+        <div class="sentence-link">
+            <p>若你需要了解更完整的分类与最新内容，可直接通过 <a href="https://portal-beibosport.com">贝博体育</a> 查阅相关板块。建议从首页导航进入你感兴趣的体育类别。</p>
+        </div>
+
+        <!-- 可信但克制的说明 -->
+        <div style="background: #fafbfd; padding: 1.2rem 1.8rem; border-radius: 14px; border: 1px solid #e6eaf0; margin: 1.8rem 0;">
+            <p style="font-size: 0.95rem; color: #2c3e50;"><strong>说明：</strong> 本页内容仅为平台功能与信息结构的客观梳理，所有描述均基于公开可用信息。不构成任何形式的投资建议、预测或担保。请根据自身判断合理使用平台内容。</p>
+        </div>
+
+        <footer class="footer-note">
+            <span>内容整理 · 仅供参考 &nbsp;|&nbsp; 页面最后更新：2025</span>
+        </footer>
+    </main>
+</body>
+</html>
